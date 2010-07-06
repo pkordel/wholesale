@@ -1,0 +1,5 @@
+<% AVAILABLE_CURRENCIES.each do |currency| -%>
+<li><%=link_to(image_tag("flags/#{currency.to_s.downcase[0..-2]}.png",{:alt => currency, :title => currency}), set_currency_path(:currency => currency)) %></li>
+<% end -%>
+<li><%= link_to t("home") , root_path %></li>
+<li class="cart-indicator"><%= link_to_cart %></li>

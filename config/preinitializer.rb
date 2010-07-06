@@ -1,0 +1,1 @@
+SPREE_EXTENSIONS_LOAD_ORDER = [:theme_default, :all, :multiple_currencies, :wholesale, :site]
