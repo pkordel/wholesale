@@ -3,3 +3,4 @@ log/
 public/images
 public/stylesheets
 public/javascripts
+db/*.sqlite3.db
