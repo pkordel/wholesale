@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100605152042) do
+ActiveRecord::Schema.define(:version => 20100706160918) do
 
   create_table "addresses", :force => true do |t|
     t.string   "firstname"
@@ -227,6 +227,7 @@ ActiveRecord::Schema.define(:version => 20100605152042) do
     t.decimal  "adjustment_total",               :precision => 8, :scale => 2, :default => 0.0, :null => false
     t.decimal  "credit_total",                   :precision => 8, :scale => 2, :default => 0.0, :null => false
     t.datetime "completed_at"
+    t.string   "currency"
   end
 
   add_index "orders", ["number"], :name => "index_orders_on_number"
@@ -522,16 +523,19 @@ ActiveRecord::Schema.define(:version => 20100605152042) do
 
   create_table "variants", :force => true do |t|
     t.integer  "product_id"
-    t.string   "sku",                                         :default => "",    :null => false
-    t.decimal  "price",         :precision => 8, :scale => 2,                    :null => false
-    t.decimal  "weight",        :precision => 8, :scale => 2
-    t.decimal  "height",        :precision => 8, :scale => 2
-    t.decimal  "width",         :precision => 8, :scale => 2
-    t.decimal  "depth",         :precision => 8, :scale => 2
+    t.string   "sku",                                               :default => "",    :null => false
+    t.decimal  "price",               :precision => 8, :scale => 2,                    :null => false
+    t.decimal  "weight",              :precision => 8, :scale => 2
+    t.decimal  "height",              :precision => 8, :scale => 2
+    t.decimal  "width",               :precision => 8, :scale => 2
+    t.decimal  "depth",               :precision => 8, :scale => 2
     t.datetime "deleted_at"
-    t.boolean  "is_master",                                   :default => false
-    t.integer  "count_on_hand",                               :default => 0,     :null => false
-    t.decimal  "cost_price",    :precision => 8, :scale => 2
+    t.boolean  "is_master",                                         :default => false
+    t.integer  "count_on_hand",                                     :default => 0,     :null => false
+    t.decimal  "cost_price",          :precision => 8, :scale => 2
+    t.decimal  "wholesale_price",     :precision => 8, :scale => 2
+    t.decimal  "price_usd",           :precision => 8, :scale => 2
+    t.decimal  "wholesale_price_usd", :precision => 8, :scale => 2
   end
 
   add_index "variants", ["product_id"], :name => "index_variants_on_product_id"
