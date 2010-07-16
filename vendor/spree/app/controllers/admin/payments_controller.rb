@@ -31,7 +31,8 @@ class Admin::PaymentsController < Admin::BaseController
 
     rescue Spree::GatewayError => e
       flash.now[:error] = "#{e.message}"
-      response_for :create_fails
+      @payment.destroy
+      redirect_to new_object_path
     end
   end
 

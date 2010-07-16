@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100706160918) do
+ActiveRecord::Schema.define(:version => 20100714095456) do
 
   create_table "addresses", :force => true do |t|
     t.string   "firstname"
@@ -539,6 +539,13 @@ ActiveRecord::Schema.define(:version => 20100706160918) do
   end
 
   add_index "variants", ["product_id"], :name => "index_variants_on_product_id"
+
+  create_table "wholesale_products", :id => false, :force => true do |t|
+    t.integer "user_id",                                                  :null => false
+    t.integer "variant_id",                                               :null => false
+    t.decimal "unique_wholesale_price",     :precision => 8, :scale => 2
+    t.decimal "unique_wholesale_price_usd", :precision => 8, :scale => 2
+  end
 
   create_table "zone_members", :force => true do |t|
     t.integer  "zone_id"
