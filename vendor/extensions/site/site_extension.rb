@@ -21,6 +21,8 @@ class SiteExtension < Spree::Extension
     Product.send(:include, Site::Product)
     
     LineItem.send(:include, Site::LineItem)
+    
+    Admin::OrdersController.send(:helper, MultipleCurrenciesHelper, SiteHelper)
 
     # make your helper avaliable in all views
     # Spree::BaseController.class_eval do
